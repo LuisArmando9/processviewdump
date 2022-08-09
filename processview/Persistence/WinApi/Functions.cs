@@ -11,12 +11,15 @@ namespace ProcessView.Persistence.WinApi
     internal class Functions
     {
         [DllImport("kernel32.dll", SetLastError = true)]
-        internal static extern void GetSystemInfo(ref SYSTEM_INFO Info);
+        public static extern void GetSystemInfo(ref SYSTEM_INFO Info);
 
         [DllImport("kernel32.dll")]
-        static extern int VirtualQueryEx(IntPtr hProcess, IntPtr lpAddress, out MEMORY_BASIC_INFORMATION lpBuffer, uint dwLength);
+        public static extern int VirtualQueryEx(IntPtr hProcess, IntPtr lpAddress, out MEMORY_BASIC_INFORMATION64 lpBuffer, int dwLength);
 
         [DllImport("kernel32.dll", SetLastError = true)]
-        public static extern bool ReadProcessMemory(IntPtr hProcess,IntPtr lpBaseAddress, byte[] lpBuffer, Int32 nSize, out IntPtr lpNumberOfBytesRead);
+        public static extern bool ReadProcessMemory(IntPtr hProcess, ulong lpBaseAddress, byte[] lpBuffer, ulong nSize, out int lpNumberOfBytesRead);
+
+        [DllImport("kernel32.dll")]
+        public static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
     }
 }

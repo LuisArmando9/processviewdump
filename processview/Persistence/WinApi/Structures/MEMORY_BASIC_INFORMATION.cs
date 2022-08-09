@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace ProcessView.Persistence.WinApi.Structures
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal struct MEMORY_BASIC_INFORMATION
+    public struct MEMORY_BASIC_INFORMATION
     {
         public IntPtr BaseAddress;
         public IntPtr AllocationBase;

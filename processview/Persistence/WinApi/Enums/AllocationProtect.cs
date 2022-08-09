@@ -14,6 +14,7 @@ namespace ProcessView.Persistence.WinApi.Enums
         PAGE_WRITECOPY = 0x00000008,
         PAGE_GUARD = 0x00000100,
         PAGE_NOCACHE = 0x00000200,
-        PAGE_WRITECOMBINE = 0x00000400
+        PAGE_WRITECOMBINE = 0x00000400,
+        MEM_COMMIT = 0x00001000,
     }
 }
