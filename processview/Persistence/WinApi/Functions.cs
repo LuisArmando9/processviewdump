@@ -14,7 +14,7 @@ namespace ProcessView.Persistence.WinApi
         public static extern void GetSystemInfo(ref SYSTEM_INFO Info);
 
         [DllImport("kernel32.dll")]
-        public static extern int VirtualQueryEx(IntPtr hProcess, IntPtr lpAddress, out MEMORY_BASIC_INFORMATION64 lpBuffer, int dwLength);
+        public static extern int VirtualQueryEx(IntPtr hProcess, IntPtr lpAddress, ref MEMORY_BASIC_INFORMATION64 lpBuffer, int dwLength);
 
         [DllImport("kernel32.dll", SetLastError = true)]
         public static extern bool ReadProcessMemory(IntPtr hProcess, ulong lpBaseAddress, byte[] lpBuffer, ulong nSize, out int lpNumberOfBytesRead);

@@ -6,31 +6,23 @@ using System.Threading.Tasks;
 using ProcessView.Business.Utils;
 using ProcessView.Business.Exceptions;
 using System.Diagnostics;
+using ProcessView.Persistence.WinApi.Structures;
+using ProcessView.Business.Interfaces;
 
 namespace ProcessView.Business
 {
     internal class ProcessView
     {
-        private static ProcessView? _instance = null;
-        
-        private static readonly object _instanceLock  = new object();
-        ProcessView() { }
-        public static  ProcessView GetInstance
+       
+        private readonly MemoryProcess memoryProcess;
+       
+
+        ProcessView(MemoryProcess memoryProcessParam) 
         {
-            get
-            {
-                lock (_instanceLock)
-                {
-                    if( _instance == null)
-                    {
-                        _instance = new ProcessView();
-                    }
-                    return _instance;
-                }
-                
-            }
+            memoryProcess = memoryProcessParam;
 
         }
+      
         
         public void Kill(int id)
         {
@@ -54,6 +46,8 @@ namespace ProcessView.Business
             return threads;
             
         }
+
+        public List<IProcessDumpMemory?> ReadAllVirtualMemory(int processId) => memoryProcess.GetDump(processId);
         
 
         

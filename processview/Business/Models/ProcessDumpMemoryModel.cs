@@ -10,6 +10,6 @@ namespace ProcessView.Business.Models
     {
         public ulong StartAddress { get; set; }
         public ulong EndAddress { get; set; }
-        public byte[] memoryContent { get; set; }
+        public byte[]? memoryContent { get; set; }
     }
 }
